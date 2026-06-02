@@ -58,17 +58,28 @@ Models were evaluated using:
 
 Special focus was given to Recall because correctly identifying risky customers is important in loan default prediction.
 
+### 5. Imbalance Handling
+
+* Used `class_weight='balanced'`
+* Applied SMOTE (Synthetic Minority Oversampling Technique)
+* Compared model performance before and after SMOTE
+* Evaluated impact on recall and precision
+
+
 ---
 
 ## Results Summary
 
-| Model               | Accuracy | Recall (Risky Customers) |
-| ------------------- | -------- | ------------------------ |
-| Logistic Regression | 65%      | 31%                      |
-| Decision Tree       | 88%      | 82%                      |
-| Random Forest       | 89%      | 76%                      |
+| Model                 | Accuracy | Recall (Risky Customers) |
+| --------------------- | -------- | ------------------------ |
+| Logistic Regression   | 65%      | 31%                      |
+| Decision Tree         | 88%      | 82%                      |
+| Random Forest         | 89%      | 76%                      |
+| Random Forest + SMOTE | 89%      | 77%                      |
 
-Random Forest achieved the best overall performance with strong balance between accuracy and risky customer detection.
+Random Forest achieved the best overall balance between accuracy and risky customer detection.
+
+Applying SMOTE slightly improved recall, but the improvement was marginal because Random Forest with class balancing was already handling the imbalanced dataset effectively.
 
 ---
 
@@ -103,6 +114,7 @@ Through this project, the following machine learning concepts were learned:
 * Ensemble Learning
 * Model Evaluation Metrics
 * Feature Importance Analysis
+* SMOTE Oversampling
 
 ---
 
@@ -139,7 +151,6 @@ loan-default-predictor/
 Possible future improvements for this project:
 
 * Hyperparameter Tuning
-* SMOTE for imbalance handling
 * XGBoost implementation
 * Model deployment using Flask or Streamlit
 * Cross-validation
